@@ -29,7 +29,18 @@
   Call your class Employee and receive all the data in the constructor in the order listed above.
 */
 
-//Code Here
+class Employee {
+  constructor(fn, ln, em, age){
+    this.first_name = fn;// = "Nick";
+    this.last_name = ln;// = "Pekarek";
+    this.email =em; //= "nick.pekarek@outlook.com";
+    this.age = age;// = 28
+  }
+
+  makeWidget() {
+    return `${this.first_name} ${this.last_name} Widget`
+  }
+}
 
 
 
@@ -49,8 +60,25 @@
   Call your new class Manager
 */
 
-//Code Here
+class Manager {
+  constructor(fn, ln, em, age){
+    this.first_name = fn;
+    this.last_name = ln;
+    this.email =em; 
+    this.age = age;
+    this.reports = [];
+  }
 
+  makeWidget() {
+    return `${this.first_name} ${this.last_name} Widget`
+  }
+  hire(newEmployee){
+    this.reports.push(newEmployee);
+  }
+  fire(index){
+    this.reports.splice(index,1)
+  }
+}
 
 
 ////////// PROBLEM 3 //////////
@@ -75,7 +103,38 @@
   Call your new class ProgressiveManager
 */
 
-//Code Here
+class ProgressiveManager {
+  constructor(fn, ln, em, age){
+    this.first_name = fn;
+    this.last_name = ln;
+    this.email =em; 
+    this.age = age;
+    this.reports = [];
+    this.title = 'Not a manager';
+    this.bonus = 0
+  }
+  makeWidget() {
+    return `${this.first_name} ${this.last_name} Widget`
+  }
+  checkTitle(){
+    if (this.reports.length === 0){this.title = 'Not a manager'}
+    else if (this.reports.length > 0 && this.reports.length <= 3){this.title = 'Barely Manager'} 
+    else if (this.reports.length > 3 && this.reports.length <= 10){this.title = 'Mostly Manager'} 
+    else if (this.reports.length > 10 && this.reports.length <= 50){this.title = 'Manager'} 
+    else if (this.reports.length > 50 && this.reports.length <= 100){this.title = 'Bestest Manager'} 
+    else {this.title = 'Not a manager'} 
+  }
+  hire(newEmployee){
+    this.reports.push(newEmployee);
+    this.checkTitle();
+  }
+  fire(index){
+    this.reports.splice(index,1);
+    this.bonus += 100;
+    this.checkTitle();
+  }
+}
+ 
 
 
 
